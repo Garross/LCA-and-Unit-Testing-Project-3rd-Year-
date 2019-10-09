@@ -77,9 +77,7 @@ manual testing
 #
 # #visualising the data
 # print(root)
-root = None
-print("LCA(4, 5) = %d" % (findLCA(root, 4, 5, )))
-# print("LCA(4, 5) = %d" % (findLCA(root, 4, 5, )))
+
 #
 # print("LCA(4, 6) = %d" % (findLCA(root, 4, 6)))
 #
