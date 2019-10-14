@@ -1,4 +1,6 @@
 from binarytree import Node
+
+
 # Python Program for Lowest Common Ancestor in a Binary Tree
 # O(n) solution to find LCS of two given values n1 and n2
 
@@ -76,10 +78,16 @@ manual testing
 # root.right.right = Node(7)
 #
 # #visualising the data
-# print(root)
-
+# root = Node(1)
+# root.left = Node(3)
+# root.right = Node(5)
+# root.left.left = Node(6)
+# root.left.right = Node(8)
 #
-# print("LCA(4, 6) = %d" % (findLCA(root, 4, 6)))
+# print(root)
+#
+# #
+# print("LCA(5, 6) = %d" % (findLCA(root, 1, 3)))
 #
 # print("LCA(3, 4) = %d" % (findLCA(root, 3, 4)))
 #
