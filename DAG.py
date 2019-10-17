@@ -5,38 +5,57 @@ facts and functionalities of graphs.
 FOUND ON GITHUB which led to website: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v2.0.0/ush/resume_forecast/Graph.py
 """
 
-import unittest
 import itertools
 
 
 class DAG_LCA:
 
-    def findLCA(dagDict, v1, v2):
+    def findLCA(dag, v1, v2):
 
+        dagDict = dag.graphDict()
+        dagDict
         solution = []
 
         anc1 = [v1]
         anc2 = [v2]
-        v1ancestors = getAncestors(v1, dagDict, anc1)
-        v2ancestors = getAncestors(v2, dagDict, anc2)
+        v1ancestors = DAG_LCA.getAncestors(v1, dagDict, anc1)
+        v2ancestors = DAG_LCA.getAncestors(v2, dagDict, anc2)
+
+        if v1ancestors == []:
+            v1ancestors = [v1]
+        if v2ancestors == []:
+            v2ancestors = [v1]
 
         for i in v1ancestors:
-            for i2 in v2ancestors:
-                if i == i2:
+            for j in v2ancestors:
+                if i == j:
                     solution.append(i)
+
+        r = []
+
+        for i in solution:
+            dec = DAG_LCA.getDescendants(i, dagDict, [])
+            for j in dec:
+                for k in solution:
+                    if j == k:
+                        if i in solution:
+                            r.append(i)
+
+        for i in list(set(r)):
+            solution.remove(i)
 
         return solution
 
     def getAncestors(v, dagDict, anc):
 
-        if prev(v, dagDict) == []:
+        if DAG_LCA.prev(v, dagDict) == []:
             return []
 
-        anc.append(prev(v, dagDict))
+        anc.append(DAG_LCA.prev(v, dagDict))
         anc = list(itertools.chain(*anc))
 
-        for i in prev(v, dagDict):
-            anc.append(getAncestors(i, dagDict, anc))
+        for i in DAG_LCA.prev(v, dagDict):
+            anc.append(DAG_LCA.getAncestors(i, dagDict, anc))
             anc = list(itertools.chain(*anc))
 
         return list(set(anc))
@@ -51,8 +70,23 @@ class DAG_LCA:
 
         return prev
 
+    def getDescendants(v, dagDict, dec):
 
-# class to hold DAG objet
+        if dagDict[v] == []:
+            return []
+
+        dec.append(dagDict[v])
+        dec = list(itertools.chain(*dec))
+
+        for i in dagDict[v]:
+            dec.append(DAG_LCA.getDescendants(i, dagDict, dec))
+            dec = list(itertools.chain(*dec))
+
+        return list(set(dec))
+
+    # class to hold DAG objet
+
+
 # Adopted and modified from https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v2.0.0/ush/resume_forecast/Graph.py
 
 class DAG:
@@ -126,4 +160,17 @@ class DAG:
     def graphDict(self):
         return (self.__graph_dict)
 
+
+testDag = DAG()
+testDag.add_vertex("A")
+testDag.add_vertex("B")
+testDag.add_vertex("C")
+testDag.add_vertex("D")
+
+testDag.add_edge (["A","B"])
+testDag.add_edge(["B","C"])
+testDag.add_edge(["C","D"])
+
+dictionary = testDag.graphDict()
+print(dictionary)
 
