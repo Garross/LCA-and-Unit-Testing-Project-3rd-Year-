@@ -161,16 +161,16 @@ class DAG:
         return (self.__graph_dict)
 
 
-testDag = DAG()
-testDag.add_vertex("A")
-testDag.add_vertex("B")
-testDag.add_vertex("C")
-testDag.add_vertex("D")
-
-testDag.add_edge (["A","B"])
-testDag.add_edge(["B","C"])
-testDag.add_edge(["C","D"])
-
-dictionary = testDag.graphDict()
-print(dictionary)
+# testDag = DAG()
+# testDag.add_vertex("A")
+# testDag.add_vertex("B")
+# testDag.add_vertex("C")
+# testDag.add_vertex("D")
+#
+# testDag.add_edge (["A","B"])
+# testDag.add_edge(["B","C"])
+# testDag.add_edge(["C","D"])
+#
+# dictionary = testDag.graphDict()
+# print(dictionary)
 
