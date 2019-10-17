@@ -1,8 +1,9 @@
 from binarytree import Node
 
+#Found on github by searching repos with the tags LCA and python
 
 # Python Program for Lowest Common Ancestor in a Binary Tree
-# O(n) solution to find LCS of two given values n1 and n2
+# O(n) solution to find LCA of two given values n1 and n2
 
 # A binary tree node
 
