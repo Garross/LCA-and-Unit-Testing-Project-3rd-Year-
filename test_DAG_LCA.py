@@ -125,32 +125,44 @@ class test_Dag_LCA(unittest.TestCase):
         testDag.add_edge(["E", "B"])
         testDag.add_edge(["B", "A"])
 
-        self.assertEqual([], DAG.DAG_LCA.findLCA(testDag, "Z", "E"),
+        self.assertEqual(None, DAG.DAG_LCA.findLCA(testDag, "Z", "E"),
                          "Incorrect result:" + str(DAG.DAG_LCA.findLCA(testDag, "Z", "E")))
 
-    def test_TwoMissingNodes(self):
+    # def test_TwoMissingNodes(self):
+    #     testDag = DAG.DAG()
+    #
+    #     testDag.add_vertex("G")
+    #     testDag.add_vertex("F")
+    #     testDag.add_vertex("E")
+    #     testDag.add_vertex("D")
+    #     testDag.add_vertex("C")
+    #     testDag.add_vertex("B")
+    #     testDag.add_vertex("A")
+    #
+    #     testDag.add_edge(["G", "F"])
+    #     testDag.add_edge(["G", "D"])
+    #     testDag.add_edge(["F", "E"])
+    #     testDag.add_edge(["D", "C"])
+    #     testDag.add_edge(["C", "B"])
+    #     testDag.add_edge(["E", "B"])
+    #     testDag.add_edge(["B", "A"])
+    #
+    #     self.assertEqual([], DAG.DAG_LCA.findLCA(testDag, "Z", "Y"),
+    #                      "Incorrect result:" + str(DAG.DAG_LCA.findLCA(testDag, "Z", "Y")))
+
+    def test_Single(self):
+
+        testDag = DAG.DAG()
+        testDag.add_vertex("G")
+
+        self.assertEqual(['G'], DAG.DAG_LCA.findLCA(testDag, "G", "G"),
+                         "Incorrect result:" + str(DAG.DAG_LCA.findLCA(testDag, "G", "G")))
+
+    def test_EmpytyTree(self):
         testDag = DAG.DAG()
 
-        testDag.add_vertex("G")
-        testDag.add_vertex("F")
-        testDag.add_vertex("E")
-        testDag.add_vertex("D")
-        testDag.add_vertex("C")
-        testDag.add_vertex("B")
-        testDag.add_vertex("A")
-
-        testDag.add_edge(["G", "F"])
-        testDag.add_edge(["G", "D"])
-        testDag.add_edge(["F", "E"])
-        testDag.add_edge(["D", "C"])
-        testDag.add_edge(["C", "B"])
-        testDag.add_edge(["E", "B"])
-        testDag.add_edge(["B", "A"])
-
-        self.assertEqual([], DAG.DAG_LCA.findLCA(testDag, "Z", "Y"),
-                         "Incorrect result:" + str(DAG.DAG_LCA.findLCA(testDag, "Z", "Y")))
-
-
+        self.assertEqual( None, DAG.DAG_LCA.findLCA(testDag, "G", "G"),
+                         "Incorrect result:" + str(DAG.DAG_LCA.findLCA(testDag, "G", "G")))
 
 
 if __name__ == '__main__':
