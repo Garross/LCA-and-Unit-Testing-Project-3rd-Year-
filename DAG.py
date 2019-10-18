@@ -2,7 +2,7 @@
 A simple Python graph class, demonstrating the essential
 facts and functionalities of graphs.
 
-FOUND ON GITHUB which led to website: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v2.0.0/ush/resume_forecast/Graph.py
+FOUND ON GITHUB and website: https://www.nco.ncep.noaa.gov/pmb/codes/nwprod/nwm.v2.0.0/ush/resume_forecast/Graph.py
 """
 
 import itertools
@@ -167,10 +167,12 @@ class DAG:
 # testDag.add_vertex("C")
 # testDag.add_vertex("D")
 #
+#
 # testDag.add_edge (["A","B"])
 # testDag.add_edge(["B","C"])
 # testDag.add_edge(["C","D"])
 #
+# print(testDag.edges())
 # dictionary = testDag.graphDict()
 # print(dictionary)
 
