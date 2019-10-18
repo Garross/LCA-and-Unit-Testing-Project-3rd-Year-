@@ -12,10 +12,10 @@ class DAG_LCA:
 
     def findLCA(dag, v1, v2):
 
-        #Checks for missing nodes
+        # Checks for missing nodes
         Nodes = set(dag.vertices())
         if (v2 not in Nodes or v1 not in Nodes):
-            #print("Chosen Nodes are not present")
+            # print("Chosen Nodes are not present")
             return None
 
         dagDict = dag.graphDict()
@@ -38,9 +38,7 @@ class DAG_LCA:
                     solution.append(i)
 
         r = []
-        #Checks for missing nodes
-
-
+        # Checks for missing nodes
 
         for i in solution:
             dec = DAG_LCA.getDescendants(i, dagDict, [])
@@ -61,10 +59,12 @@ class DAG_LCA:
             return []
 
         anc.append(DAG_LCA.prev(v, dagDict))
-        anc = list(itertools.chain(*anc))
+
+
 
         for i in DAG_LCA.prev(v, dagDict):
             anc.append(DAG_LCA.getAncestors(i, dagDict, anc))
+
             anc = list(itertools.chain(*anc))
 
         return list(set(anc))
@@ -82,7 +82,6 @@ class DAG_LCA:
     def getDescendants(v, dagDict, dec):
 
         if dagDict[v] == []:
-
             return []
 
         dec.append(dagDict[v])
@@ -123,6 +122,8 @@ class DAG:
             list as a value is added to the dictionary.
             Otherwise nothing has to be done.
         """
+
+
         if vertex not in self.__graph_dict:
             self.__graph_dict[vertex] = []
 
@@ -185,4 +186,6 @@ class DAG:
 # print(testDag.edges())
 # dictionary = testDag.graphDict()
 # print(dictionary)
+
+
 
