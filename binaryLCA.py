@@ -14,6 +14,7 @@ from binarytree import Node
 #         self.left = None
 #         self.right = None
 
+#Directed Acyclic Graph
 
 # Finds the path from root node to given root of the tree.
 # Stores the path in a list path[], returns true if path
